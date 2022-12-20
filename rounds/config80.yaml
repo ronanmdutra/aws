@@ -1,0 +1,50 @@
+simpleArgs: &simple-args
+  initialMoney: 10000
+  moneyToTransfer: 100
+  numberOfAccounts: &number-of-accounts 1000
+
+test:
+  name: simple
+  description: >-
+    This is an example benchmark for Caliper, to test the backend DLT's
+    performance with simple account opening & querying transactions.
+  workers:
+    number: 1
+  rounds:
+    - label: addInfo01
+      description: Test description for add info on contract.
+      txDuration: 60
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 80
+      workload:
+        module: benchmarks/scenario/simple/transfer.js
+        arguments:
+          << : *simple-args
+          money: 100
+    - label: addInfo02
+      description: Test description for add info on contract.
+      txDuration: 60
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 80
+      workload:
+        module: benchmarks/scenario/simple/transfer.js
+        arguments:
+          << : *simple-args
+          money: 100
+    - label: addInfo03
+      description: Test description for add info on contract.
+      txDuration: 60
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 80
+      workload:
+        module: benchmarks/scenario/simple/transfer.js
+        arguments:
+          << : *simple-args
+          money: 100
+    
